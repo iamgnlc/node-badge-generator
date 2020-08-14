@@ -7,8 +7,10 @@ const path = require("path");
 
 const error = require("./middleware/error");
 const headers = require("./middleware/headers");
+const key = require("./middleware/key");
 
 app.use(headers);
+app.use(key);
 
 app.get("/generate/:left/:right/:color?", (req, res) => {
   const badge = swig.renderFile(path.join(__dirname, "badge.svg"), req.params);
